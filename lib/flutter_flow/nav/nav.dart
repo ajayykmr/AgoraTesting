@@ -40,6 +40,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'HomePage',
           path: '/homePage',
           builder: (context, params) => const HomePageWidget(),
+        ),
+        FFRoute(
+          name: 'video_calling_page',
+          path: '/videoCallingPage',
+          builder: (context, params) => VideoCallingPageWidget(
+            appId: params.getParam('appId', ParamType.String),
+            channelName: params.getParam('channelName', ParamType.String),
+            token: params.getParam('token', ParamType.String),
+            uid: params.getParam('uid', ParamType.int),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
